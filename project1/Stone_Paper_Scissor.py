@@ -1,5 +1,5 @@
-#rock paper scissor game:
-#where rock r =-1 paper p =0 and scissor s=1
+# rock paper scissor game:
+# where rock r =-1 paper p =0 and scissor s=1
 
 import random
 comp=random.choice([-1, 0, 1])
@@ -43,4 +43,5 @@ else:
             print("You win.🎉")
 
         else:
+
             print("Please provide a correct input!")
