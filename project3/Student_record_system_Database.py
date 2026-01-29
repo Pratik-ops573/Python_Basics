@@ -26,7 +26,7 @@ def store():
         e = int(input("English: "))
         nep = int(input("Nepali: "))
 
-        # simple validation
+       
         if any(x < 0 or x > 75 for x in [p, b, m, c, e, nep]):
             print("Invalid marks! Must be 0-75. Skipping student.")
             continue
@@ -34,7 +34,7 @@ def store():
         total = p + b + m + c + e + nep
         percentage = (total / 450) * 100
 
-        # pass/fail logic
+        
         if any(x < 35 for x in [p, b, m, c, e, nep]):
             output = "Fail"
             division = "Fail"
@@ -49,7 +49,7 @@ def store():
             else:
                 division = "Third Division"
 
-        # if ID exists → update else insert
+        
         if id_exists(sid):
             sql = """UPDATE results SET
                      name=%s, Physics=%s, Bio=%s, Maths=%s, Chemistry=%s,
@@ -70,7 +70,7 @@ def store():
 
         db.commit()
 
-# ---------- VIEW STUDENT ----------
+# view students:
 def display_student():
     sid = input("Enter Student ID: ")
     cursor.execute("SELECT * FROM results WHERE id=%s", (sid,))
@@ -84,7 +84,7 @@ def display_student():
     else:
         print("Student not found!")
 
-# ---------- DELETE STUDENT ----------
+# delete student:
 def delete_student():
     sid = input("Enter Student ID to delete: ")
     if id_exists(sid):
@@ -94,7 +94,7 @@ def delete_student():
     else:
         print("Student ID not found!")
 
-# ---------- PRINT REPORT ----------
+# report print:
 def print_report():
     sid = input("Enter Student ID: ")
     cursor.execute("SELECT * FROM results WHERE id=%s", (sid,))
@@ -110,7 +110,7 @@ def print_report():
     else:
         print("Student not found!")
 
-# ---------- MENU ----------
+
 while True:
     print("\n--- MENU ---")
     print("1. Add / Update Student")
@@ -132,3 +132,4 @@ while True:
     elif choice == '5':
         print("Exiting program...")
         break
+
